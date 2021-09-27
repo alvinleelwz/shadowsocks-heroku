@@ -12,7 +12,7 @@ getTable = (key) ->
   decrypt_table = new Array(256)
   md5sum = crypto.createHash("md5")
   md5sum.update key
-  hash = new Buffer(md5sum.digest(), "binary")
+  hash = Buffer.from(md5sum.digest(), "binary")
   al = hash.readUInt32LE(0)
   ah = hash.readUInt32LE(4)
   i = 0
@@ -113,7 +113,7 @@ class Encryptor
 
   get_cipher: (password, method, op, iv) ->
     method = method.toLowerCase()
-    password = new Buffer.alloc(password, 'binary')
+    password = Buffer.from(password, 'binary')
     m = @get_cipher_len(method)
     if m?
       [key, iv_] = EVP_BytesToKey(password, m[0], m[1])

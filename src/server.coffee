@@ -120,7 +120,7 @@ wss.on "connection", (ws) ->
 
         if data.length > headerLength
           # make sure no data is lost
-          buf = new Buffer.alloc(data.length - headerLength)
+          buf = Buffer.alloc(data.length - headerLength)
           data.copy buf, 0, headerLength
           cachedPieces.push buf
           buf = null

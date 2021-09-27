@@ -20,7 +20,7 @@
     decrypt_table = new Array(256);
     md5sum = crypto.createHash("md5");
     md5sum.update(key);
-    hash = new Buffer(md5sum.digest(), "binary");
+    hash = Buffer.from(md5sum.digest(), "binary");
     al = hash.readUInt32LE(0);
     ah = hash.readUInt32LE(4);
     i = 0;
@@ -140,7 +140,7 @@
     Encryptor.prototype.get_cipher = function(password, method, op, iv) {
       var iv_, key, m, ref;
       method = method.toLowerCase();
-      password = new Buffer(password, 'binary');
+      password = Buffer.from(password, 'binary');
       m = this.get_cipher_len(method);
       if (m != null) {
         ref = EVP_BytesToKey(password, m[0], m[1]), key = ref[0], iv_ = ref[1];

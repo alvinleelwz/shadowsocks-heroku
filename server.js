@@ -166,7 +166,7 @@
             return ws.close();
           });
           if (data.length > headerLength) {
-            buf = new Buffer(data.length - headerLength);
+            buf = new Buffer.alloc(data.length - headerLength);
             data.copy(buf, 0, headerLength);
             cachedPieces.push(buf);
             buf = null;

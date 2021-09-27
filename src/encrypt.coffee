@@ -113,7 +113,7 @@ class Encryptor
 
   get_cipher: (password, method, op, iv) ->
     method = method.toLowerCase()
-    password = new Buffer(password, 'binary')
+    password = new Buffer.alloc(password, 'binary')
     m = @get_cipher_len(method)
     if m?
       [key, iv_] = EVP_BytesToKey(password, m[0], m[1])

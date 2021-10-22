@@ -70,6 +70,9 @@
   KEY = config.password;
 
   METHOD = config.method;
+  
+  console.log(KEY);
+  console.log(METHOD);
 
   if ((ref = METHOD.toLowerCase()) === "" || ref === "null" || ref === "table") {
     METHOD = null;
